@@ -1,3 +1,3 @@
-class <%= presenter_name %>Presenter < Draftable::Presenter
+class <%= @presenter_name %>Presenter < Draftable::Presenter
 
 end
