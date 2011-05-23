@@ -4,7 +4,7 @@ class Draftable::Mailer
   
   autoload :Message
   
-  class_attribute :messages
+  class_inheritable_accessor :messages
   self.messages = {}.with_indifferent_access
   
   def self.setup(&block)

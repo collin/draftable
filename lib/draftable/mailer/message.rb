@@ -8,9 +8,10 @@ class Draftable::Mailer::Message
     self.mailer = mailer
     # Potential per-message override
     self._setup = block if block_given?
+    self.presenters = []
     
-    if mailer.factory.nil? || !mailer.factory.respond_to?(:create)
-      raise "Mailer::Factory and subclasses must be configured by #{self.class.to_s}.factory = SomeFactoryClass. SomeFactoryClass must respond_to a create method. The create method is passed a symbol representing which object to create."
+    if Draftable.factory.nil? || !Draftable.factory.respond_to?(:create)
+      raise "Draftable must be configured by Draftable.factory = SomeFactoryClass. SomeFactoryClass must respond_to a create method. The create method is passed a symbol representing which object to create."
     end
   end
   
@@ -19,7 +20,7 @@ class Draftable::Mailer::Message
     args = generate_args_from_factories if args.empty?
     
     message = dup
-    message.setup_block.call(*args)
+    message.instance_exec(*args, &setup_block)
     
     message
   end
@@ -30,9 +31,9 @@ class Draftable::Mailer::Message
   
   def presenter(presenter_klass, model)
     if model.is_a?(Array)
-      presenters << presenter_klass.new(model)
-    else
       presenters << presenter_klass.collection(model)
+    else
+      presenters << presenter_klass.new(model)
     end
   end
   
@@ -46,7 +47,7 @@ class Draftable::Mailer::Message
   
   def generate_args_from_factories
     self.factories.map do |factory|
-      mailer.factory.create(factory)
+      Draftable.factory.create(factory)
     end
   end
 end

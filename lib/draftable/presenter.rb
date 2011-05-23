@@ -1,17 +1,22 @@
 class Draftable::Presenter
   extend ActiveSupport::DescendantsTracker
   
-  class_attribute :presentations
+  class_inheritable_accessor :presentations
   self.presentations = {}.with_indifferent_access
   
   attr_accessor :model
   
   def method_missing(method, *args)
-    if presentation = self.class.presentations[method]
-      presentation.to_html(self)
+    if self.model.respond_to?(method)
+      model.send(method)
     else
       super
     end
+  end
+  
+  def present(name)
+    presentation = self.class.presentations[name]
+    presentation.to_html(self)
   end
   
   def initialize(model)
@@ -19,11 +24,12 @@ class Draftable::Presenter
   end
   
   def self.collection(models)
-    Draftable::PresenterCollection.new models.map{ |model| new model }
+    presenters = models.map{ |model| new model }
+    Draftable::PresenterCollection.new presenters
   end
   
   def self.present(method_name, options={}, &block)
-    self.presentations[method_name] = Draftable::Presentation.new(name, options, &block)
+    self.presentations[method_name] = Draftable::Presentation.new(method_name, options, &block)
   end
   
   # def self.many_to_yaml(presenters)

@@ -6,7 +6,7 @@ class Draftable::Presentation
   autoload :Label
   autoload :Currency
   
-  attr_accessor :name, :as, :content
+  attr_accessor :name, :as, :content_block
   
   def initialize(name, options, &block)
     self.name = name
@@ -48,7 +48,7 @@ class Draftable::Presentation
   end
   
   def presenter_identifier(presenter)
-    [presenter.class.to_s, name].join(":")
+    [presenter.class.to_s.gsub(/Presenter$/, '').underscore, name].join("-")
   end
   
   def widget_class

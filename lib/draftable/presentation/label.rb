@@ -3,7 +3,7 @@ class Draftable::Presentation::Label < Draftable::Presentation::Widget
   
   def content
     label :class => @presenter_identifier do
-      formatted_content
+      text formatted_content
     end
   end
   

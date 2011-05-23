@@ -1,11 +1,8 @@
 require 'active_support/configurable'
-require 'active_support/core_ext/object/blank'
-require 'active_support/core_ext/string/inflections'
+require 'active_support/core_ext'
 require 'active_support/dependencies/autoload'
-require 'active_support/core_ext/hash/indifferent_access'
-require 'active_support/core_ext/class/attribute'
 require 'active_support/descendants_tracker'
-
+require 'active_model'
 require 'pathname'
 
 module Draftable
