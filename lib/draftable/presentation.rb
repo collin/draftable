@@ -1,4 +1,11 @@
 class Draftable::Presentation
+  extend ActiveSupport::Autoload
+  
+  autoload :Widget
+  autoload :Image
+  autoload :Label
+  autoload :Currency
+  
   attr_accessor :name, :as, :content
   
   def initialize(name, options, &block)

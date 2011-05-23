@@ -26,8 +26,13 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/draftable",
+    "draftable.gemspec",
     "lib/draftable.rb",
     "lib/draftable/cli.rb",
+    "lib/draftable/cli/tasks/dump.rb",
+    "lib/draftable/cli/tasks/init.rb",
+    "lib/draftable/cli/tasks/mailer.rb",
+    "lib/draftable/cli/tasks/presenter.rb",
     "lib/draftable/mailer.rb",
     "lib/draftable/mailer/message.rb",
     "lib/draftable/presentation.rb",
@@ -37,6 +42,9 @@ Gem::Specification.new do |s|
     "lib/draftable/presentation/widget.rb",
     "lib/draftable/presenter.rb",
     "lib/draftable/presenter_collection.rb",
+    "lib/draftable/templates/initializer.rb",
+    "lib/draftable/templates/mailer.rb",
+    "lib/draftable/templates/presenter.rb",
     "test/helper.rb",
     "test/test_draftable.rb"
   ]
@@ -50,17 +58,29 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<activesupport>, [">= 3.1.0.beta1"])
+      s.add_runtime_dependency(%q<actionpack>, [">= 3.1.0.beta1"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.1.0.beta1"])
+      s.add_runtime_dependency(%q<erector>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.0"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
+      s.add_dependency(%q<activesupport>, [">= 3.1.0.beta1"])
+      s.add_dependency(%q<actionpack>, [">= 3.1.0.beta1"])
+      s.add_dependency(%q<rails>, [">= 3.1.0.beta1"])
+      s.add_dependency(%q<erector>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.0"])
       s.add_dependency(%q<rcov>, [">= 0"])
     end
   else
+    s.add_dependency(%q<activesupport>, [">= 3.1.0.beta1"])
+    s.add_dependency(%q<actionpack>, [">= 3.1.0.beta1"])
+    s.add_dependency(%q<rails>, [">= 3.1.0.beta1"])
+    s.add_dependency(%q<erector>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.0"])

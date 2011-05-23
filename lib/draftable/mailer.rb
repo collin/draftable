@@ -1,5 +1,8 @@
 class Draftable::Mailer
   extend ActiveSupport::DescendantsTracker
+  extend ActiveSupport::Autoload
+  
+  autoload :Message
   
   class_attribute :messages
   self.messages = {}.with_indifferent_access
