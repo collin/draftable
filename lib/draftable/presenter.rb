@@ -24,19 +24,19 @@ class Draftable::Presenter
     self.presentations[method_name] = Draftable::Presentation.new(name, options, &block)
   end
   
-  def self.many_to_yaml(presenters)
-    hash = {}
-    presenters.each do |presenter|
-      hash[presenter.class.to_s] = to_yml(presenter)
-    end
-    
-    hash.to_yml
-  end
-  
-  def self.to_yml(presenter)
-    hash = {}
-    presenter.class.presentations.each do |name, presentation|
-      hash[name] = presentation.to_html
-    end
-  end
+  # def self.many_to_yaml(presenters)
+  #   hash = {}
+  #   presenters.each do |presenter|
+  #     hash[presenter.class.to_s] = to_yml(presenter)
+  #   end
+  #   
+  #   hash.to_yml
+  # end
+  # 
+  # def self.to_yml(presenter)
+  #   hash = {}
+  #   presenter.class.presentations.each do |name, presentation|
+  #     hash[name] = presentation.to_html
+  #   end
+  # end
 end
