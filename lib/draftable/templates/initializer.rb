@@ -1,0 +1,3 @@
+Draftable.config do
+  
+end
