@@ -1,5 +1,7 @@
 class Draftable::Presenter
-  class_inheritable_accessor :presentations
+  extend ActiveSupport::DescendantsTracker
+  
+  class_attribute :presentations
   self.presentations = {}.with_indifferent_access
   
   attr_accessor :model

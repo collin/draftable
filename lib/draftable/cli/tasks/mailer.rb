@@ -4,6 +4,6 @@ class Draftable::CLI
   def mailer(mailer_name)
     load_draftable_config
     @mailer_name = mailer_name
-    template "mailer.rb", Draftable.mailer_dir + "/#{mailer_name}_mailer.rb"    
+    template "mailer.rb", (Draftable.mailer_dir + "/#{mailer_name}_mailer.rb").to_s
   end
 end

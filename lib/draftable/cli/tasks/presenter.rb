@@ -4,6 +4,8 @@ class Draftable::CLI
   def presenter(presenter_name)
     load_draftable_config
     @presenter_name = presenter_name
-    template "presenter.rb", Draftable.presenter_dir + "/#{presenter_name}_presenter.rb" 
+    puts Draftable.presenter_dir.inspect
+    puts (Draftable.presenter_dir + "/#{presenter_name}_presenter.rb").to_s
+    template "presenter.rb", (Draftable.presenter_dir + "/#{presenter_name}_presenter.rb").to_s
   end
 end

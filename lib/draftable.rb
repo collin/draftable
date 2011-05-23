@@ -2,6 +2,10 @@ require 'active_support/configurable'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/dependencies/autoload'
+require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/class/attribute'
+require 'active_support/descendants_tracker'
+
 require 'pathname'
 
 module Draftable
@@ -39,11 +43,11 @@ module Draftable
   end
   
   def self.mailer_dir
-    Pathname.new(canfig.mailer_dir).expand_path
+    Pathname.new(config.mailer_dir)
   end
   
   def self.presenter_dir
-    Pathname.new(config.presenter_dir).expand_path
+    Pathname.new(config.presenter_dir)
   end
   
   def self.load_mailers

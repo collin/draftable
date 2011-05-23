@@ -1,5 +1,7 @@
 class Draftable::Mailer
-  class_inheritable_accessor :messages
+  extend ActiveSupport::DescendantsTracker
+  
+  class_attribute :messages
   self.messages = {}.with_indifferent_access
   
   def self.setup(&block)

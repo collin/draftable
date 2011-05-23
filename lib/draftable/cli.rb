@@ -12,7 +12,7 @@ class Draftable::CLI < Thor
   
   no_tasks do
     def load_draftable_config
-      require Pathname.new(options[:config_dir]).expand_path.join("draftable.rb")
+      require Pathname.new(options[:config_dir]).expand_path.join("draftable").to_s
     end    
   end
 end
