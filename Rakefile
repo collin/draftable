@@ -17,10 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "draftable"
   gem.homepage = "http://github.com/collin/draftable"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Ruby development tools and libraries for the Draftable authoring tool.}
+  gem.description = %Q{Classes you can include into your Ruby project and a command line tool to integrate with the Draftable authoring tool.}
   gem.email = "collintmiller@gmail.com"
   gem.authors = ["Collin Miller"]
+  gem.executables = ["draftable"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
